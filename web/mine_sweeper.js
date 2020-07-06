@@ -13,8 +13,8 @@ window.onload = function () {
     }
 }
 
-function Mine(isMine) {
-    this.isMine = isMine;
+function Mine(_isMine) {
+    this.isMine = _isMine;
     Mine.prototype.getHTML = function (i, j) {
         return document.getElementById("minefield").getElementsByTagName("div")[i]..getElementsByName("input")[j];
     }

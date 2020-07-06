@@ -22,7 +22,7 @@
       <div id="startbutton"><a href="javascript:start();" onmouseover="this.style = &#39;background-color: #40abcf; color: #fff;&#39;" onmouseout="this.style = &#39;background-color: #f64; color: #eee;&#39;">
         Start Game
         </a>
-      <input type="button" id = "egg" onclick="egg()">
+      <input type="button" id = "egg" onclick="egg();">
     </div>
   </div>
 
