@@ -1,0 +1,66 @@
+
+body {
+    text-align:                             center;
+    background-image:                       url("background.gif");
+    font-size:                              large;
+}
+
+#option {
+    width:                                  380px;
+    background-color:                       rgb(237, 237, 231);
+    margin:                                 20px auto;
+    padding:                                10px 10px;
+    border:                                 5px dotted rgb(185, 214, 165);
+    font-family:                            cursive;
+    font-size:                              1.1em;
+    font-weight:                            normal;
+}
+
+input {
+    text-align:                             center;
+    font-size:                              0.8em;
+    margin:                                 2px;
+}
+
+#explain {
+    font-size:                              0.8em;
+    margin:                                 6px 0px 15px 0px;;
+}
+
+#startbutton {
+    margin:                                 10px 0px;
+}
+
+#startbutton a {
+    text-decoration:                        none;
+    color:                                  #eee;
+    padding:                                10px 10px;
+    background:                             #f64;
+}
+
+#egg {
+    position:                               absolute;
+    margin-left:                            20px;
+    margin-top:                             -5px ;
+    width:                                  40px;
+    height:                                 34px;
+    outline:                                none;
+    background-image:                       url("egg.jpg");
+    background-size:                        100%;
+}
+
+#minefield {
+    margin:                                 20px auto;
+    padding:                                10px;
+}
+
+.button0 {
+    width:                                  40px;
+    height:                                 40px;
+    margin:                                 0.5px;
+    border:                                 none;
+    outline:                                none;
+    cursor:                                 pointer;
+    background-color:                       rgb(198, 215, 185);
+    font-size:                              1em;
+}
