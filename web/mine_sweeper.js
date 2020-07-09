@@ -13,10 +13,10 @@ window.onload = function () {
     }
 }
 
-function Mine(_isMine) {
-    this.isMine = _isMine;
+function Mine(isMine) {
+    this.isMine = isMine;
     Mine.prototype.getHTML = function (i, j) {
-        return document.getElementById("minefield").getElementsByTagName("div")[i]..getElementsByName("input")[j];
+        return document.getElementById("minefield").getElementsByTagName("div")[i].getElementsByName("input")[j];
     }
 
 }
@@ -33,7 +33,7 @@ const origin_color = "blackground-color:rgb(1, 0, 0)";
 const click_color = "blackgrund-color:rgb(0, 1, 0)";
 const mine_color = "blackground-color:rgb(0, 0, 1)";
 
-function egg()  //彩蛋开关
+function eggegg()  //彩蛋开关
 {
     alert("少吃点吧！多胖了！可长点心吧！" + "\n"+ "快点击左边的开始游戏！(*′☉.̫☉)");
     //alert("点心？"+"哪儿有点心");
@@ -51,7 +51,6 @@ function start() {
     }
 
 }
-
 
 function creatMine()  //随机造雷
 {
