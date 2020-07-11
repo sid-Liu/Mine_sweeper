@@ -50,9 +50,16 @@ window.onload = function()
             alert("傻逼。。太多了");
         }
     }
+
+
+    //去掉默认的contextmenu事件，否则会和右键事件同时出现。
+    document.oncontextmenu = function(e){
+        e.preventDefault();
+    };
+
 }
 
-function Mine (isMine, num, idx)
+function Mine (isMine, num, idx )
 {
     this.isMine = isMine;
     this.num = num;
@@ -83,6 +90,7 @@ var dir = [[-1, 1, 0, 0],  //用于上下左右方向控制
 var originalcolor = "background-color: rgb(195, 218, 178);";  //原区域颜色
 var clickcolor = "background-color: rgb(157, 208, 121);";  //鼠标点击后颜色
 var minecolor = "background-color: rgb(244, 85, 85);";  //踩中雷颜色
+var democolor = "background-color: rgb(0, 1, 0);"//标记雷颜色
 
 function egg()  //菜单开关
 {
@@ -142,11 +150,13 @@ function show()  //显示游戏区域
         {
             innerhtml += "<input type='button' class='button0' value=' ' ";
             innerhtml += "onmouseover='changeColor(" + i + ", " + j + ")' onmouseout='changeColorBack(" + i + ", " + j + ")' ";
+            innerhtml += "ondblclick = 'dblclickColor(" + i + ", " + j + ")' ";
             innerhtml += "onclick='onclickChangeValue(" + i + ", " + j + ")' />";
         }
         innerhtml += "<input type='button' class='button0' value=' ' ";
         innerhtml += "onmouseover='changeColor(" + i + ", " + j + ")' onmouseout='changeColorBack(" + i + ", " + j + ")' ";
-        innerhtml += "onclick='onclickChangeValue(" + i + ", " + j + ")' /></div>";
+        innerhtml += "onclick = 'dblclickColor(" + i + ", " + j + ")' ";
+        innerhtml += "ondblclick='onclickChangeValue(" + i + ", " + j + ")' /></div>";
     }
 
     document.getElementById("minefield").innerHTML = innerhtml;
@@ -154,11 +164,13 @@ function show()  //显示游戏区域
 
 function changeColor(i, j)  //鼠标移过
 {
-    mine[i][j].getHTML(i,j).style = clickcolor;
+    if(mine[i][j].getHTML(i,j).style != democolor)
+        mine[i][j].getHTML(i,j).style = clickcolor;
 }
 
 function changeColorBack(i, j)  //鼠标移出
 {
+
     mine[i][j].getHTML(i,j).style = originalcolor;
 }
 
@@ -186,6 +198,12 @@ function onclickChangeValue(i, j)  //点击后方块改变
         alert("Win! ヽ(●´ε｀●)ノ");
     }
 }
+
+function dblclickColor(i,j){
+    mine[i][j].getHTML(i,j).style = democolor;
+}
+
+
 
 function DepthSearch(r, c)  //深搜，点开一大片无数字区
 {
