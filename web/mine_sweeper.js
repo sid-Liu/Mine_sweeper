@@ -152,8 +152,79 @@ function show()  //显示游戏区域
     document.getElementById("minefield").innerHTML = innerhtml;
 }
 
-function changeColor(i, j)  //鼠标移过
+
+
+function onclickChangeValue(i, j)  //点击后方块改变
 {
-    mine[i][j].getHTML(i,j).style = clickcolor;
+    if (mine[i][j].isMine)  //踩雷
+    {
+        showAllMines(false);
+        alert("Game Over.. (´；ω；`)");
+    }
+    else if (mine[i][j].num != 0)  //点到数字
+    {
+        mine[i][j].alreadyClick(i, j);
+        mine[i][j].getHTML(i,j).value = mine[i][j].num;
+        mine[i][j].idx = 1;
+        win++;
+    }
+    else
+        DepthSearch(i, j);  //点开一大片无数字区
+
+    /*判断是否胜出*/
+    if (win == (x*y - n) && win != 0)
+    {
+        showAllMines(true);
+        alert("Win! ヽ(●´ε｀●)ノ");
+    }
 }
 
+function DepthSearch(r, c)  //深搜，点开一大片无数字区
+{
+    if (r<0 || r>=x || c<0 || c>=y)
+        return ;
+
+    var i, j;
+    if (mine[r][c].num==0 && mine[r][c].idx==0)
+    {
+        mine[r][c].alreadyClick(r, c);
+        mine[r][c].idx = 1;
+        win++;
+        for (i=0; i<4; i++)
+            DepthSearch(r+dir[0][i], c+dir[1][i]);
+    }
+    else if (mine[r][c].num!=0 && mine[r][c].idx==0)
+    {
+        mine[r][c].alreadyClick(r, c);
+        mine[r][c].getHTML(r,c).value = mine[r][c].num;
+        mine[r][c].idx = 1;
+        win++;
+    }
+    return ;
+}
+
+function showAllMines(win)  //显示所有区域
+{
+    var color = minecolor;
+    if (win)  //赢了就不要用红色标记地雷
+        color = originalcolor;
+    for (var i=0; i<x; i++)
+        for (var j=0; j<y; j++)
+        {
+            if (mine[i][j].isMine)
+            {
+                mine[i][j].getHTML(i,j).style = color + "cursor: default";
+                mine[i][j].getHTML(i,j).value = "X";
+                mine[i][j].getHTML(i,j).onclick = "";
+                mine[i][j].getHTML(i,j).onmouseover = "";
+                mine[i][j].getHTML(i,j).onmouseout = "";
+            }
+            else if (mine[i][j].num == 0)
+                mine[i][j].alreadyClick(i, j);
+            else
+            {
+                mine[i][j].alreadyClick(i, j);
+                mine[i][j].getHTML(i,j).value = mine[i][j].num;
+            }
+        }
+}
