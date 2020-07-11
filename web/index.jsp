@@ -19,10 +19,11 @@
       y:<input type = "text" size = "12" value="15"><br/>
       n:<input type = "text" size = "12" value="24"><br/>
       <div id="explain">(x is length and y is width)<br/>(n is the number of mines)</div>
-      <div id="startbutton"><a href="javascript:start();" onmouseover="this.style = &#39;background-color: #40abcf; color: #fff;&#39;" onmouseout="this.style = &#39;background-color: #f64; color: #eee;&#39;">
-        Start Game!!
+      <div type = "button" id="startbutton">
+        <a a href="javascript:void(0);" onclick="start();egg();" onmouseover="this.style = &#39;background-color: #40abcf; color: #fff;&#39;" onmouseout="this.style = &#39;background-color: #f64; color: #eee;&#39;">
+        Start Game!
         </a>
-      <input type="button" id = "egg" onclick="alert('essage');">
+      <input type="button" id = "egg" onclick="egg();">
     </div>
   </div>
   </div>
