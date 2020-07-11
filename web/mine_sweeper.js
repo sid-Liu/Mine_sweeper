@@ -175,7 +175,7 @@ function onclickChangeValue(i, j)  //点击后方块改变
     if (win == (x*y - n) && win != 0)
     {
         showAllMines(true);
-        alert("Win! ヽ(●´ε｀●)ノ");
+        alert("Win!！ ヽ(●´ε｀●)ノ");
     }
 }
 
