@@ -152,7 +152,15 @@ function show()  //显示游戏区域
     document.getElementById("minefield").innerHTML = innerhtml;
 }
 
+function changeColor(i, j)  //鼠标移过
+{
+    mine[i][j].getHTML(i,j).style = clickcolor;
+}
 
+function changeColorBack(i, j)  //鼠标移出
+{
+    mine[i][j].getHTML(i,j).style = originalcolor;
+}
 
 function onclickChangeValue(i, j)  //点击后方块改变
 {
@@ -175,7 +183,7 @@ function onclickChangeValue(i, j)  //点击后方块改变
     if (win == (x*y - n) && win != 0)
     {
         showAllMines(true);
-        alert("Win!！ ヽ(●´ε｀●)ノ");
+        alert("Win! ヽ(●´ε｀●)ノ");
     }
 }
 
